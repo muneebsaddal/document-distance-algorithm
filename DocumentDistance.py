@@ -1,7 +1,6 @@
 import re
 import math
 import time
-from bokeh.plotting import figure, output_file, show
 
 # timer starts here
 start_time = time.clock()
@@ -11,8 +10,8 @@ dic1 = {}
 dic2 = {}
 
 # opening files
-D1 = open('file 1.txt', 'r')
-D2 = open('file 2.txt', 'r')
+D1 = open('file 1.txt', 'r') 	# 362,366 words
+D2 = open('file 2.txt', 'r') 	# 312,295 words
 
 # creating list of words
 str1 = D1.read().lower()
@@ -62,21 +61,3 @@ time = round(((time.clock() - start_time) * 1000))
 # Showing output
 print("\nDocument Distance ---> %s degree" % (round(theta, 2)))
 print("Execution time ---> %s milliseconds\n" % time)
-if theta == 90:
-	print("----> Documents exactly same.")
-elif theta > 0 and theta <= 15:
-	print("----> Documents almost same.")
-elif theta >= 15 and theta <= 75:
-	print("----> Documents somewhat different.")
-elif theta >= 75 and theta < 90:
-	print("----> Documents almost different.")
-elif theta == 0:
-	print("----> Documents totally different.")
-
-# Graphing data
-x = [6, 12, 25, 50, 100]	 # data in Mbs
-y = [1614, 3010, 6209, 12218, 27140]  # execution time
-output_file("timings.html")
-p = figure(title="Document Distance", x_axis_label='~Combined data(Mbs)', y_axis_label='time(milliseconds)')
-p.line(x, y, legend="", line_width=2)
-show(p)
